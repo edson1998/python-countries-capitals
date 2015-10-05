@@ -42,6 +42,7 @@ def Insert_Country():
         else:
             print "su dato no es valido"
             vor = True
+    todo [val1] = val2
     limpiar
     question()    
     menu()
@@ -56,12 +57,18 @@ def Countries_List():
     menu()
 
 def Capitals_List():
+    print "Here shows the Capitals and Countries"
     for i in capitals:
         print i 
     raw_input("presione enter")
-    limpiar()
     menu()
 
+def Capitals_and_Countries():
+    for i in todo:
+        print i, todo[i]
+    raw_input("enter to continue")
+    limpiar()
+    menu()
    
 
 def limpiar():
@@ -79,7 +86,8 @@ def menu():
     print "1.) Insert Country"
     print "2.) Countries List"
     print "3.) Capitals List"
-    print "4.) Exit"
+    print "4.) Capitals and Countries"
+    print "5.) Exit"
     menu = raw_input("Insert to opcion: ")
 
     if menu == "1":
@@ -89,6 +97,8 @@ def menu():
     elif menu == "3":
         Capitals_List()
     elif menu == "4":
+        Capitals_and_Countries()
+    elif menu == "5":
         salir()
        
 menu()
