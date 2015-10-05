@@ -68,7 +68,7 @@ def Capitals_and_Countries():
   
     for i in todo:
         print "COUNTRIES","             ", "CAPITALS"
-        print i.title(),"               ", todo.[i]
+        print i.title(),"               ", todo[i].title()
     raw_input("enter to continue")
     limpiar()
     menu()
