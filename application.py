@@ -27,7 +27,7 @@ def Insert_Country():
     var=True
     while var == True:
         val1 =raw_input("enter to Country: ")
-        if val1.isalpha()== True:
+        if str(val1).isalpha() == True or " " in val1:
             country.append(val1)
             var = False
         else:
@@ -36,7 +36,7 @@ def Insert_Country():
     vor = True
     while vor==True:
         val2 =raw_input("enter to Capitals: ")
-        if val2.isalpha() == True:
+        if str(val2).isalpha() == True or " " in val2:
             capitals.append(val2)
             vor = False
         else:
@@ -64,6 +64,7 @@ def Capitals_List():
     menu()
 
 def Capitals_and_Countries():
+  
     for i in todo:
         print i, todo[i]
     raw_input("enter to continue")
