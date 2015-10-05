@@ -50,23 +50,25 @@ def Insert_Country():
 
 def Countries_List():
     limpiar()
+    print "Countries"
     for i in country:
-        print i 
+        print i.title() 
     raw_input("presione enter")
     
     menu()
 
 def Capitals_List():
-    print "Here shows the Capitals and Countries"
+    print "Capitals"
     for i in capitals:
-        print i 
+        print i.title() 
     raw_input("presione enter")
     menu()
 
 def Capitals_and_Countries():
   
     for i in todo:
-        print i, todo[i]
+        print "COUNTRIES","             ", "CAPITALS"
+        print i.title(),"               ", todo.[i]
     raw_input("enter to continue")
     limpiar()
     menu()
