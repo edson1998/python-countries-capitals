@@ -107,32 +107,39 @@ def All_Ordered():
     menu()
    
 def All_Mail():
-   print "Send email by gmail"
+    limpiar()
+    print "Send email by gmail"
 
-   fromaddr = raw_input("Count from gmail: ")
-   password = getpass.getpass("Password: ")
-   toaddrs = raw_input("to: ")
-   #asunto = raw_input("subject, from message: ")
-   body = "Countries\t===========\tCapitals\n"
-   for msg in todo:
-        body = body + str(msg).center(20) +str(todo[msg]).center(20) + "\n" 
-   msg = MIMEMultipart()
-   msg['From'] = fromaddr #This saves the mail of the sender
-   msg['To'] = toaddrs  #This saves the mail of the receiver
-   msg['Subject'] = "Countries and Capitals"  #This saves the subject
-   msg.attach(MIMEText(body, 'plain')) #This saves the message
+    fromaddr = raw_input("Count from gmail: ")
+    password = getpass.getpass("Password: ")
+    toaddrs = raw_input("to: ")
+    #asunto = raw_input("subject, from message: ")
+    body = "Countries\t========\tCapitals\n"
 
-   try:
-       server = smtplib.SMTP('smtp.gmail.com:587')
-       server.starttls()
-       server.login(fromaddr,password)
-       text = msg.as_string()
-       server.sendmail(fromaddr, toaddrs, text)
-       server.quit()
-       print "yes"
-       raw_input("press enter")
-   except ValueError:
-       print "No se envio nada"
+    for msg in todo:
+        body = body + str(msg).center(25) +str(todo[msg]).center(45) + "\n" 
+    msg = MIMEMultipart()
+    msg['From'] = fromaddr #This saves the mail of the sender
+    msg['To'] = toaddrs  #This saves the mail of the receiver
+    msg['Subject'] = "Countries and Capitals"  #This saves the subject
+    msg.attach(MIMEText(body, 'plain')) #This saves the message
+
+    try:
+        server = smtplib.SMTP('smtp.gmail.com:587')
+        server.starttls()
+        server.login(fromaddr,password)
+        text = msg.as_string()
+        server.sendmail(fromaddr, toaddrs, text)
+        server.quit()
+        print "your message has been sent"
+        raw_input("enter continue")
+        menu()
+    except (smtplib.SMTPAuthenticationError):
+        print "Enter your password correctly"
+        raw_input("enter to continue")
+        All_Mail()
+
+
 
 
 
