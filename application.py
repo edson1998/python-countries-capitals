@@ -124,22 +124,24 @@ def menu():
     print "$                  6.) All Mail                        $"
     print "$                  7.) exit                            $"
     print "========================================================"
+    option = raw_input("Insert to opcion: ")
 
-    menu = raw_input("Insert to opcion: ")
-
-    if menu == "1" or menu == "country":
+    if option == "1" or option == "country":
         Country()
-    elif menu == "2" or menu == "countries list":
+    elif option == "2" or option == "countries list":
         Countries_List()
-    elif menu == "3" or menu == "capitals list":
+    elif option == "3" or option == "capitals list":
         Capitals_List()
-    elif menu == "4" or menu == "capitals and countries":
+    elif option == "4" or option == "capitals and countries":
         Capitals_and_Countries()
-    elif menu == "5" or menu == "all ordered":
+    elif option == "5" or option == "all ordered":
         All_Ordered()
-    elif menu == "6" or menu == "all mail":
+    elif option == "6" or option == "all mail":
         All_Mail
-    elif menu == "7":
+    elif option == "7"or option == "exit":
         salir()
-       
+    else:
+        print "vuelva a intertarlo"
+        raw_input("press enter to continue")
+        menu()
 menu()
