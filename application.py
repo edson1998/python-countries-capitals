@@ -1,8 +1,14 @@
+#!/usr/bin/python
+
 import os
 import sys
-#!/usr/bin/python
+import smtplib
+import getpass
 import time
 from collections import OrderedDict
+from email.MIMEMultipart import MIMEMultipart
+from email.MIMEText import MIMEText
+
 
 print "Start : %s" % time.ctime()
 time.sleep( 2 )
@@ -101,7 +107,32 @@ def All_Ordered():
     menu()
    
 def All_Mail():
-    print "dsfa"
+   print "Send email by gmail"
+
+   fromaddr = raw_input("Count from gmail: ")
+   password = getpass.getpass("Password: ")
+   toaddrs = raw_input("to: ")
+   #asunto = raw_input("subject, from message: ")
+   body = "Countries\t===========\tCapitals\n"
+   for msg in todo:
+        body = body + str(msg).center(20) +str(todo[msg]).center(20) + "\n" 
+   msg = MIMEMultipart()
+   msg['From'] = fromaddr #This saves the mail of the sender
+   msg['To'] = toaddrs  #This saves the mail of the receiver
+   msg['Subject'] = "Countries and Capitals"  #This saves the subject
+   msg.attach(MIMEText(body, 'plain')) #This saves the message
+
+   try:
+       server = smtplib.SMTP('smtp.gmail.com:587')
+       server.starttls()
+       server.login(fromaddr,password)
+       text = msg.as_string()
+       server.sendmail(fromaddr, toaddrs, text)
+       server.quit()
+       print "yes"
+       raw_input("press enter")
+   except ValueError:
+       print "No se envio nada"
 
 
 
@@ -137,7 +168,7 @@ def menu():
     elif option == "5" or option == "all ordered":
         All_Ordered()
     elif option == "6" or option == "all mail":
-        All_Mail
+        All_Mail()
     elif option == "7"or option == "exit":
         salir()
     else:
